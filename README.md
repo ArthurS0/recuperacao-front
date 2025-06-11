@@ -1,153 +1,60 @@
-# Biblioteca
-Situação de Aprendizagem - Front-End (HTML, CSS, JavaScript).
-Funcionalidades (Localstorage, Modal e responsividade).
+📚 Sistema de Biblioteca — Front-End
+Aplicação web desenvolvida para modernizar a gestão de livros de uma biblioteca municipal. O sistema permite:
 
-## Contextualização da Prova Prática — Sistema de Biblioteca
-- Você foi contratado como desenvolvedor Front-End por uma biblioteca municipal que deseja modernizar sua gestão de livros. O objetivo é criar uma aplicação web simples e funcional que permita aos funcionários da biblioteca visualizar os livros disponíveis, acessar detalhes de cada obra e registrar a locação dos exemplares por seus leitores.
+📖 Visualizar um catálogo de livros com detalhes via modal
 
-Essa aplicação será utilizada no balcão de atendimento da biblioteca, por isso precisa ser clara, objetiva e funcional, priorizando a boa usabilidade.
+📝 Registrar locações com validação de CPF
 
-## Desafio
-Desenvolver as funcionalidades conforme requisitos
+💾 Armazenar dados usando LocalStorage
 
-## Configurações
-- Fonte: Roboto (google fonts)
-- Paletta de cores Roxo do escuro ao claro
+📱 Navegar em um layout totalmente responsivo
 
-- [ ] cor1: #5E4B8A
-- [ ] cor2: #A77BCA
-- [ ] cor3: #E4C1F9
-- [ ] cor4: #F2E6FF
-- [ ] cor5: #F9F5FF
-- [ ] transp1: rgba(0, 0, 0, 0.8)
-- [ ] transp2: rgba(255, 255, 255, 0.8)
+🌐 Tecnologias Utilizadas
+HTML5
 
-### Requisitos funcionais
-- [RF001] O sistema deve apresentar o portifólio de livros disponíveis na biblioteca.
-    - [RF001.1] Deve possuir um botão "Ver Detalhes" para apresentar os livros (Modal).
-- [RF002] Locação de livros.
-    - [RF002.1] Sistema deve ter um formulário de locação.
-    - [RF002.2] Dados do formulário: Nome do livro, nome do locatário, CPF, data de locação e devolução
-    - [RF002.3] Deve validar se o CPF tem 11 digítos (sem pontuações).
-- [RF003] Todos os dados dos livros e cadastros de locação devem ser armazenados em LocalStorage e exibidos em uma tabela dentro de outra página chamada locacoes.html.
-    - [RF003.1] Na tela primcipal deve ter um ítem de menu para direcionar para a página de locações e na página de locações um botão para voltar
-    - [RF003.1] A tabela na página de locações deve ser responsiva sendo exibida tanto em tela de computador quanto celular.
-- [RF004] Todas as telad devem ser responsivas.
+CSS3
 
-### Casos de teste do Front-End
- - [CT001] Validar a responsividade.
- - [CT002] Validar se os dados estão corretos no botão "Ver Detalhes".
- - [CT003] Validação se os dados estão sendo gravados em LocalStorage.
+JavaScript
 
- 
- ## Entrega:
- A prova deve ser entregue pelo gitpages (OBRIGATÓRIO)
- ```json
- [
-  {
-    "id": 1,
-    "titulo": "Dom Quixote",
-    "autor": "Miguel de Cervantes",
-    "ano": 1605,
-    "editora": "Editora Clássicos",
-    "genero": "Romance",
-    "descricao": "Um romance satírico sobre um fidalgo que acredita ser um cavaleiro andante."
-  },
-  {
-    "id": 2,
-    "titulo": "1984",
-    "autor": "George Orwell",
-    "ano": 1949,
-    "editora": "Companhia das Letras",
-    "genero": "Distopia",
-    "descricao": "Um retrato sombrio de um futuro totalitário."
-  },
-  {
-    "id": 3,
-    "titulo": "A Revolução dos Bichos",
-    "autor": "George Orwell",
-    "ano": 1945,
-    "editora": "Editora B",
-    "genero": "Fábula política",
-    "descricao": "Uma alegoria sobre o totalitarismo disfarçado de fábula animal."
-  },
-  {
-    "id": 4,
-    "titulo": "O Pequeno Príncipe",
-    "autor": "Antoine de Saint-Exupéry",
-    "ano": 1943,
-    "editora": "Agir",
-    "genero": "Infantil/Filosófico",
-    "descricao": "Um conto filosófico com críticas sociais sutis."
-  },
-  {
-    "id": 5,
-    "titulo": "Orgulho e Preconceito",
-    "autor": "Jane Austen",
-    "ano": 1813,
-    "editora": "Penguin",
-    "genero": "Romance",
-    "descricao": "A história de Elizabeth Bennet enquanto lida com questões de classe e amor."
-  },
-  {
-    "id": 6,
-    "titulo": "O Hobbit",
-    "autor": "J.R.R. Tolkien",
-    "ano": 1937,
-    "editora": "HarperCollins",
-    "genero": "Fantasia",
-    "descricao": "A jornada de Bilbo Bolseiro em uma aventura pela Terra Média."
-  },
-  {
-    "id": 7,
-    "titulo": "Moby Dick",
-    "autor": "Herman Melville",
-    "ano": 1851,
-    "editora": "Nova Fronteira",
-    "genero": "Aventura",
-    "descricao": "A obsessiva caçada do capitão Ahab pela baleia branca."
-  },
-  {
-    "id": 8,
-    "titulo": "A Metamorfose",
-    "autor": "Franz Kafka",
-    "ano": 1915,
-    "editora": "L&PM",
-    "genero": "Ficção filosófica",
-    "descricao": "Um homem acorda transformado em um inseto gigante."
-  },
-  {
-    "id": 9,
-    "titulo": "Grande Sertão: Veredas",
-    "autor": "João Guimarães Rosa",
-    "ano": 1956,
-    "editora": "Nova Aguilar",
-    "genero": "Romance",
-    "descricao": "Um clássico da literatura brasileira sobre o sertão e seus conflitos."
-  },
-  {
-    "id": 10,
-    "titulo": "Harry Potter e a Pedra Filosofal",
-    "autor": "J.K. Rowling",
-    "ano": 1997,
-    "editora": "Rocco",
-    "genero": "Fantasia",
-    "descricao": "O começo da jornada de um jovem bruxo em Hogwarts."
-  }
-]
-```
+LocalStorage
 
-## Wireframes
-### Catalogo de livros
+Google Fonts (Roboto)
 
-1. Lista de livros:
-![Lista](./assets/lista.png)
+🎨 Paleta de Cores
+Nome	Cor
+Cor 1	#5E4B8A
+Cor 2	#A77BCA
+Cor 3	#E4C1F9
+Cor 4	#F2E6FF
+Cor 5	#F9F5FF
 
-2. Modal:
-![Modal](./assets/modal.png)
+📄 Funcionalidades
+ Exibição de livros com botão “Ver Detalhes” usando Modal
 
-3. Cadastro:
-![Cadastro](./assets/cadastro.png)
+ Registro de locações com formulário validado
 
-#### Obs: Os wireframes são apenas sugestões, você pode criar o layout que desejar, desde que atenda aos requisitos funcionais e não funcionais.
-Use sua criatividade e faça um layout bonito e funcional.
+ Validação de CPF com 11 dígitos numéricos
+
+ Armazenamento e exibição em LocalStorage
+
+ Tabela de locações responsiva (locacoes.html)
+
+ Link entre páginas (index.html ↔ locacoes.html)
+
+✅ Casos de Teste (Front-End)
+Código	Descrição
+CT001	Validar responsividade em diferentes dispositivos
+CT002	Conferir se os dados exibidos no Modal estão corretos
+CT003	Verificar se os dados das locações estão gravados em localStorage
+
+📌 Requisitos Atendidos
+ RF001: Catálogo de livros
+
+ RF002: Locação de livros com formulário
+
+ RF003: Armazenamento em LocalStorage e exibição
+
+ RF004: Responsividade total
+
+📫 Contato
+Para dúvidas ou sugestões, envie uma issue no repositório ou entre em contato por [arthursouzadeoliveira70@gmail.com].

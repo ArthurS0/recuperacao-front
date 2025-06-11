@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locações</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cor1: #5E4B8A;
+      --cor2: #A77BCA;
+      --cor3: #E4C1F9;
+      --cor4: #F2E6FF;
+      --cor5: #F9F5FF;
+      --transp1: rgba(0, 0, 0, 0.8);
+      --transp2: rgba(255, 255, 255, 0.8);
+    }
+
+    .voltar{
+      text-decoration: none;
+      background-color: var(--cor2);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 0 10px; 
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cor5);
+      padding: 20px;
+      color: var(--cor1);
+    }
+
+    header {
+      background-color: var(--cor1);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    form {
+      background-color: var(--cor4);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid var(--cor2);
+    }
+
+    form button {
+      background-color: var(--cor1);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid var(--cor2);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        background: var(--cor2);
+        color: white;
+        font-size: 16px;
+      }
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+      }
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Registro de Locações</h1>
+  </header>
+
+  <nav style="margin: 20px 0;">
+    <button onclick="window.location.href='index.html'" class="voltar">Voltar</button>
+  </nav>
+
+  <form id="formLocacao">
+    <label for="livro">Nome do Livro</label>
+    <input type="text" id="livro" required>
+
+    <label for="locatario">Nome do Locatário</label>
+    <input type="text" id="locatario" required>
+
+    <label for="cpf">CPF (somente números)</label>
+    <input type="text" id="cpf" required pattern="\d{11}" title="Digite 11 números">
+
+    <label for="dataLocacao">Data de Locação</label>
+    <input type="date" id="dataLocacao" required>
+
+    <label for="dataDevolucao">Data de Devolução</label>
+    <input type="date" id="dataDevolucao" required>
+
+    <button type="submit">Registrar Locação</button>
+  </form>
+
+  <h2>Locações Registradas</h2>
+  <table id="tabelaLocacoes">
+    <thead>
+      <tr>
+        <th>Livro</th>
+        <th>Locatário</th>
+        <th>CPF</th>
+        <th>Locação</th>
+        <th>Devolução</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('formLocacao');
+    const tabela = document.getElementById('tabelaLocacoes').querySelector('tbody');
+
+    function atualizarTabela() {
+      tabela.innerHTML = '';
+      const locacoes = JSON.parse(localStorage.getItem('locacoes')) || [];
+      locacoes.forEach(loc => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td data-label="Livro">${loc.livro}</td>
+          <td data-label="Locatário">${loc.locatario}</td>
+          <td data-label="CPF">${loc.cpf}</td>
+          <td data-label="Locação">${loc.dataLocacao}</td>
+          <td data-label="Devolução">${loc.dataDevolucao}</td>
+        `;
+        tabela.appendChild(tr);
+      });
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const livro = document.getElementById('livro').value;
+      const locatario = document.getElementById('locatario').value;
+      const cpf = document.getElementById('cpf').value;
+      const dataLocacao = document.getElementById('dataLocacao').value;
+      const dataDevolucao = document.getElementById('dataDevolucao').value;
+
+      if (!/^\d{11}$/.test(cpf)) {
+        alert('CPF deve conter exatamente 11 números.');
+        return;
+      }
+
+      const novaLocacao = { livro, locatario, cpf, dataLocacao, dataDevolucao };
+      const locacoes = JSON.parse(localStorage.getItem('locacoes')) || [];
+      locacoes.push(novaLocacao);
+      localStorage.setItem('locacoes', JSON.stringify(locacoes));
+      form.reset();
+      atualizarTabela();
+    });
+
+    window.onload = atualizarTabela;
+  </script>
+</body>
+</html>
